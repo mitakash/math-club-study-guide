@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Club Video Learning Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .study-plan {
+            background: #e7f3ff;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .study-plan h2 {
+            color: #1976D2;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .study-plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .study-week {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #2196F3;
+        }
+
+        .study-week h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+        }
+
+        .study-week ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .study-week li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .study-week li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2196F3;
+            font-weight: bold;
+        }
+
+        .category {
+            margin-bottom: 30px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .category:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .category-header h2 {
+            font-size: 1.8em;
+        }
+
+        .toggle-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s;
+        }
+
+        .category.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .category-content {
+            padding: 20px;
+            display: block;
+        }
+
+        .category.collapsed .category-content {
+            display: none;
+        }
+
+        .topic {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .topic:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .topic-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            flex: 1;
+        }
+
+        .difficulty-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .difficulty-beginner {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .difficulty-intermediate {
+            background: #FF9800;
+            color: white;
+        }
+
+        .difficulty-advanced {
+            background: #F44336;
+            color: white;
+        }
+
+        .topic-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .video-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .video-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .video-link:before {
+            content: "▶";
+            margin-right: 8px;
+            font-size: 0.9em;
+        }
+
+        .proof-section {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .proof-section h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .proof-section p {
+            color: #856404;
+            line-height: 1.8;
+        }
+
+        .proof-section .example {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .filter-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .topic-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Math Club Video Learning Index</h1>
+            <p>Complete Guide for MATHCOUNTS Competition Prep</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search topics... (e.g., 'pythagorean', 'fractions', 'probability')">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Topics</button>
+                <button class="filter-btn" data-filter="beginner">Beginner</button>
+                <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+                <button class="filter-btn" data-filter="advanced">Advanced</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Study Plan Section -->
+            <div class="study-plan">
+                <h2>📅 Recommended 8-Week Study Plan</h2>
+                <p>Follow this progressive path to build your competition math skills systematically. Each week builds on previous concepts.</p>
+                
+                <div class="study-plan-grid">
+                    <div class="study-week">
+                        <h4>Week 1-2: Foundations</h4>
+                        <ul>
+                            <li>Fractions, Decimals, Percents</li>
+                            <li>Order of Operations</li>
+                            <li>Prime Numbers & Factorization</li>
+                            <li>Divisibility Rules</li>
+                            <li>GCF & LCM</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-week">
+                        <h4>Week 3: Algebra Basics</h4>
+                        <ul>
+                            <li>Solving Equations</li>
+                            <li>Ratios & Proportions</li>
+                            <li>Mean, Median, Mode</li>
+                            <li>Sequences</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-week">
+                        <h4>Week 4: Geometry Fundamentals</h4>
+                        <ul>
+                            <li>Area Formulas</li>
+                            <li>Perimeter & Circumference</li>
+                            <li>Angles & Polygons</li>
+                            <li>Pythagorean Theorem</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-week">
+                        <h4>Week 5: Advanced Geometry</h4>
+                        <ul>
+                            <li>Special Right Triangles</li>
+                            <li>Coordinate Geometry</li>
+                            <li>3D Geometry</li>
+                            <li>Circle Properties</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-week">
+                        <h4>Week 6: Counting & Probability</h4>
+                        <ul>
+                            <li>Counting Principle</li>
+                            <li>Permutations & Combinations</li>
+                            <li>Basic Probability</li>
+                            <li>Casework Strategies</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-week">
+                        <h4>Week 7: Advanced Topics</h4>
+                        <ul>
+                            <li>Modular Arithmetic</li>
+                            <li>Number Bases</li>
+                            <li>Factorials</li>
+                            <li>Pascal's Triangle</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-week">
+                        <h4>Week 8: Problem-Solving</h4>
+                        <ul>
+                            <li>Complementary Counting</li>
+                            <li>Stars and Bars</li>
+                            <li>System of Equations</li>
+                            <li>Competition Strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 1: Arithmetic Foundations -->
+            <div class="category" data-category="arithmetic">
+                <div class="category-header">
+                    <h2>1. Arithmetic Foundations</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Fractions, Decimals & Percents</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Understanding how fractions, decimals, and percents are related and how to convert between them. Essential for almost every competition problem.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=Yw8azUV_vW8" target="_blank" class="video-link">Fractions for Kids</a>
+                            <a href="https://www.youtube.com/watch?v=BItpeFXC4vA" target="_blank" class="video-link">Intro to Decimals (Khan)</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+percentages+introduction" target="_blank" class="video-link">Understanding Percentages (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=jgWqSjgMAtw" target="_blank" class="video-link">Introduction to Fractions (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Simple Proof: Why 1/2 = 0.5 = 50%</h4>
+                            <p>Think of a pizza cut into 2 equal pieces. If you take 1 piece, you have:</p>
+                            <p>• <strong>Fraction:</strong> 1/2 (1 out of 2 pieces)</p>
+                            <p>• <strong>Decimal:</strong> 0.5 (because 1 ÷ 2 = 0.5)</p>
+                            <p>• <strong>Percent:</strong> 50% (0.5 × 100 = 50, meaning "50 out of 100")</p>
+                            <p>To convert: Fraction → Decimal (divide top by bottom) → Percent (multiply by 100)</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Order of Operations (PEMDAS)</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            The specific order (Parentheses, Exponents, Multiplication/Division, Addition/Subtraction) you must follow to solve problems correctly.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+order+of+operations+introduction" target="_blank" class="video-link">Order of Operations Intro (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=dAgfnK528RA" target="_blank" class="video-link">PEMDAS Explained (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why PEMDAS Matters</h4>
+                            <p>Without a standard order, 2 + 3 × 4 could equal different things:</p>
+                            <div class="example">
+Wrong: (2 + 3) × 4 = 5 × 4 = 20
+Right: 2 + (3 × 4) = 2 + 12 = 14
+                            </div>
+                            <p>PEMDAS ensures everyone gets the same answer. Multiplication comes before addition, so we do 3 × 4 first, then add 2.</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Exponents & Powers</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            What it means to raise a number to a power. For example, 2³ = 2 × 2 × 2 = 8.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+introduction+to+exponents" target="_blank" class="video-link">Intro to Exponents (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=X_fWLHH1j4M" target="_blank" class="video-link">Understanding Exponents (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Exponent Patterns</h4>
+                            <p>Exponents are just repeated multiplication:</p>
+                            <div class="example">
+2¹ = 2
+2² = 2 × 2 = 4
+2³ = 2 × 2 × 2 = 8
+2⁴ = 2 × 2 × 2 × 2 = 16
+                            </div>
+                            <p>Notice: Each time we increase the exponent by 1, we multiply by 2 again. This is why 2⁵ = 2⁴ × 2 = 32.</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Square Roots</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Finding the number that, when multiplied by itself, gives you the original number. For example, √9 = 3 because 3 × 3 = 9.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+what+is+a+square+root" target="_blank" class="video-link">What is a Square Root? (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=uPcPSNjqEPM" target="_blank" class="video-link">Square Root Introduction (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Understanding Square Roots</h4>
+                            <p>A square root "undoes" squaring:</p>
+                            <div class="example">
+If 5² = 25, then √25 = 5
+If 7² = 49, then √49 = 7
+If 10² = 100, then √100 = 10
+                            </div>
+                            <p>Think of it like finding the side length of a square when you know its area. If a square has area 36, each side must be √36 = 6.</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Divisibility Rules</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Quick tricks to determine if a number is divisible by 2, 3, 4, 5, 6, 8, 9, or 10. This is a huge time-saver in competitions!
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+divisibility+tests" target="_blank" class="video-link">Divisibility Tests (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=2JIcG_0UT3Y" target="_blank" class="video-link">Divisibility Rules 2,3,4,5,6,9,10 (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why the Rule of 3 Works</h4>
+                            <p>To check if a number is divisible by 3, add up its digits. If that sum is divisible by 3, so is the original number.</p>
+                            <p><strong>Example:</strong> Is 123 divisible by 3?</p>
+                            <div class="example">
+Add digits: 1 + 2 + 3 = 6
+Since 6 ÷ 3 = 2 (no remainder), 123 is divisible by 3
+Check: 123 ÷ 3 = 41 ✓
+                            </div>
+                            <p>This works because of how our base-10 number system is structured. When we add digits, we're checking a property that's preserved under division by 3.</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Prime Numbers & Prime Factorization</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Understanding what a prime number is (only divisible by 1 and itself) and how to break any number down into a product of prime numbers.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=mIStB5X4U8M" target="_blank" class="video-link">Prime Numbers (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=5gBtzdM5M5k" target="_blank" class="video-link">What are Prime Numbers (Math with Mr. J)</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+prime+factorization" target="_blank" class="video-link">Prime Factorization (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 The Fundamental Theorem of Arithmetic</h4>
+                            <p>Every whole number bigger than 1 can be written as a product of prime numbers in exactly ONE way (ignoring order).</p>
+                            <p><strong>Example:</strong> Let's factor 60</p>
+                            <div class="example">
+60 = 2 × 30
+60 = 2 × 2 × 15
+60 = 2 × 2 × 3 × 5
+60 = 2² × 3 × 5 (prime factorization)
+                            </div>
+                            <p>No matter how you break down 60, you'll always end up with 2² × 3 × 5. This is why prime numbers are called the "building blocks" of all numbers!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">GCF & LCM</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Finding the Greatest Common Factor (GCF) and Least Common Multiple (LCM) of two or more numbers.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+greatest+common+factor" target="_blank" class="video-link">Greatest Common Factor (Khan)</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+least+common+multiple" target="_blank" class="video-link">Least Common Multiple (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 GCF & LCM Connection</h4>
+                            <p>For any two numbers a and b: GCF(a,b) × LCM(a,b) = a × b</p>
+                            <p><strong>Example:</strong> Let's find GCF and LCM of 12 and 18</p>
+                            <div class="example">
+12 = 2² × 3
+18 = 2 × 3²
+
+GCF: Take smallest powers of common primes
+GCF = 2¹ × 3¹ = 6
+
+LCM: Take largest powers of all primes
+LCM = 2² × 3² = 36
+
+Check: 6 × 36 = 216 = 12 × 18 ✓
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Perfect Squares & Cubes</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Memorizing squares (1² through 15²) and cubes (1³ through 10³) will save you valuable time in competitions.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=bVxFGVY-VkM" target="_blank" class="video-link">Perfect Squares 1-20</a>
+                            <a href="https://www.youtube.com/watch?v=OJZmmw3lVT8" target="_blank" class="video-link">Perfect Cubes</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Pattern in Perfect Squares</h4>
+                            <p>There's a cool pattern in the differences between consecutive perfect squares:</p>
+                            <div class="example">
+1² = 1
+2² = 4    (difference: 3 = 2×1 + 1)
+3² = 9    (difference: 5 = 2×2 + 1)
+4² = 16   (difference: 7 = 2×3 + 1)
+5² = 25   (difference: 9 = 2×4 + 1)
+                            </div>
+                            <p>The difference between n² and (n+1)² is always 2n + 1. This is because (n+1)² = n² + 2n + 1.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Category 2: Algebra -->
+            <div class="category" data-category="algebra">
+                <div class="category-header">
+                    <h2>2. Algebra</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Mean, Median, Mode & Range</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            The four main ways to describe a set of data: average (mean), middle value (median), most frequent (mode), and spread (range).
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+mean+median+mode+range" target="_blank" class="video-link">Mean, Median, Mode, Range (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=h8EYEJ32oQ8" target="_blank" class="video-link">Statistics Intro (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Understanding the Mean</h4>
+                            <p>The mean is the "balance point" of a dataset. If you had blocks representing each number, the mean is where they'd balance on a seesaw.</p>
+                            <p><strong>Example:</strong> Find the mean of {3, 5, 7, 9, 11}</p>
+                            <div class="example">
+Sum: 3 + 5 + 7 + 9 + 11 = 35
+Count: 5 numbers
+Mean: 35 ÷ 5 = 7
+
+Notice: 7 is in the middle, and the numbers
+are balanced around it: (3,5) below and (9,11) above
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Ratios & Proportions</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Comparing quantities and solving problems using equivalent ratios. Includes rate problems like distance = rate × time.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+introduction+to+ratios" target="_blank" class="video-link">Intro to Ratios (Khan)</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+solving+rate+problems" target="_blank" class="video-link">Solving Rate Problems (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=KPLi0c1SPg4" target="_blank" class="video-link">Ratios and Proportions (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why Cross-Multiplication Works</h4>
+                            <p>When solving proportions like a/b = c/d, we can cross-multiply: a × d = b × c</p>
+                            <p><strong>Why?</strong> If we multiply both sides by b × d:</p>
+                            <div class="example">
+Start: a/b = c/d
+Multiply both sides by b: a = (c × b)/d
+Multiply both sides by d: a × d = c × b
+                            </div>
+                            <p>Cross-multiplication is just a shortcut for multiplying both sides by both denominators!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Solving Basic Equations</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            How to find the value of x by isolating it on one side of the equation using inverse operations.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+two+step+equations" target="_blank" class="video-link">Two-Step Equations (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=n5dobTKH_r8" target="_blank" class="video-link">Solving Equations (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 The Balance Method</h4>
+                            <p>An equation is like a balanced scale. Whatever you do to one side, you must do to the other to keep it balanced.</p>
+                            <p><strong>Example:</strong> Solve 2x + 5 = 13</p>
+                            <div class="example">
+Start:     2x + 5 = 13
+Subtract 5: 2x = 8      (balanced: 13 - 5 = 8)
+Divide by 2: x = 4      (balanced: 8 ÷ 2 = 4)
+
+Check: 2(4) + 5 = 8 + 5 = 13 ✓
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Arithmetic Sequences</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            A list of numbers with a common difference between consecutive terms (like 2, 5, 8, 11, ...).
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+arithmetic+sequences" target="_blank" class="video-link">Arithmetic Sequences (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=PXZ-4xtChJc" target="_blank" class="video-link">Introduction to Sequences (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Sum of Arithmetic Sequence</h4>
+                            <p>To find the sum of an arithmetic sequence, use: Sum = n/2 × (first + last)</p>
+                            <p><strong>Why does this work?</strong> Pair up terms from opposite ends:</p>
+                            <div class="example">
+Find sum: 1 + 2 + 3 + ... + 98 + 99 + 100
+
+Pair up: (1+100) + (2+99) + (3+98) + ...
+Each pair = 101
+Number of pairs = 50
+
+Sum = 50 × 101 = 5050
+                            </div>
+                            <p>This clever trick was supposedly discovered by young Carl Gauss when he was in elementary school!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Difference of Squares</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            A key factoring pattern: a² - b² = (a + b)(a - b). This appears in many competition problems.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+difference+of+squares" target="_blank" class="video-link">Difference of Squares (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=SbpC7P2jKEk" target="_blank" class="video-link">Factoring Difference of Squares (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Visual Proof of Difference of Squares</h4>
+                            <p>Imagine a square with side length a. Remove a smaller square with side length b from the corner.</p>
+                            <p>The remaining area is a² - b². We can rearrange this into a rectangle:</p>
+                            <div class="example">
+Start with: a² - b²
+Cut and rearrange the L-shape
+New shape: Rectangle with dimensions (a+b) and (a-b)
+Area: (a + b) × (a - b)
+
+Therefore: a² - b² = (a + b)(a - b)
+                            </div>
+                            <p><strong>Example:</strong> 100² - 99² = (100+99)(100-99) = 199 × 1 = 199</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Systems of Equations</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            Solving two or more equations together to find values that satisfy all equations simultaneously.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+systems+of+equations" target="_blank" class="video-link">Systems of Equations (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=vA-55wZtLeE" target="_blank" class="video-link">Solving Systems (Khan)</a>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="advanced">
+                        <div class="topic-header">
+                            <span class="topic-title">Modular Arithmetic</span>
+                            <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                        </div>
+                        <div class="topic-description">
+                            A "clock" arithmetic system that deals with remainders. Very common in AMC 8 and MATHCOUNTS competitions.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+modular+arithmetic" target="_blank" class="video-link">What is Modular Arithmetic? (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=lJ3CD9M3xMQ" target="_blank" class="video-link">Modular Arithmetic (AoPS)</a>
+                            <a href="https://www.youtube.com/watch?v=JlMJJcZRheI" target="_blank" class="video-link">Intro to Modular Arithmetic (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Clock Arithmetic</h4>
+                            <p>Modular arithmetic is like a clock. On a 12-hour clock, 10 + 5 = 3 (not 15!).</p>
+                            <p><strong>Mathematical notation:</strong> 17 ≡ 5 (mod 12) means "17 and 5 leave the same remainder when divided by 12"</p>
+                            <div class="example">
+What is 23 mod 7?
+23 ÷ 7 = 3 remainder 2
+So 23 ≡ 2 (mod 7)
+
+Useful property: (a + b) mod n = ((a mod n) + (b mod n)) mod n
+Example: (23 + 17) mod 7 = (2 + 3) mod 7 = 5
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Quadratic Formula</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            For ax² + bx + c = 0, the solutions are x = (-b ± √(b² - 4ac)) / (2a). This solves any quadratic equation.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+quadratic+formula" target="_blank" class="video-link">Quadratic Formula (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=i7idZfS8t8w" target="_blank" class="video-link">Using the Quadratic Formula (Khan)</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Category 3: Geometry -->
+            <div class="category" data-category="geometry">
+                <div class="category-header">
+                    <h2>3. Geometry</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Angles & Polygons</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Types of angles (acute, obtuse, complementary, supplementary) and properties of polygons, including the sum of interior angles.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+angles+parallel+lines+transversals" target="_blank" class="video-link">Angles & Parallel Lines (Khan)</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+polygon+interior+angles" target="_blank" class="video-link">Polygon Interior Angles (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=IG-TStXUXNw" target="_blank" class="video-link">Angles Introduction (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Sum of Interior Angles Formula</h4>
+                            <p>For any polygon with n sides: Sum of interior angles = 180(n - 2)°</p>
+                            <p><strong>Why?</strong> You can divide any polygon into triangles:</p>
+                            <div class="example">
+Triangle (3 sides): 1 triangle = 180°
+Quadrilateral (4 sides): 2 triangles = 360°
+Pentagon (5 sides): 3 triangles = 540°
+Hexagon (6 sides): 4 triangles = 720°
+
+Pattern: Number of triangles = n - 2
+Sum = 180(n - 2)
+                            </div>
+                            <p>Draw lines from one vertex to all non-adjacent vertices. Count the triangles!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Area Formulas</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Finding the 2D space inside shapes: triangles, rectangles, trapezoids, circles, and more.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+area+and+perimeter" target="_blank" class="video-link">Area and Perimeter (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=ubO_X5-Ihzw" target="_blank" class="video-link">Area of Polygons (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why Triangle Area = (1/2) × Base × Height</h4>
+                            <p>Every triangle fits inside a rectangle that's exactly twice its size:</p>
+                            <div class="example">
+Draw a triangle with base b and height h
+Complete it into a rectangle: length b, width h
+Rectangle area = b × h
+
+The triangle is exactly HALF the rectangle
+Triangle area = (1/2) × b × h
+                            </div>
+                            <p>You can see this by drawing a diagonal across any rectangle - it creates two identical triangles!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Circle Properties</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            Circumference = 2πr, Area = πr². Also includes arcs, sectors, and parts of circles.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+circles+area+circumference" target="_blank" class="video-link">Circles: Area & Circumference (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=f40jKn4YwKY" target="_blank" class="video-link">Circle Basics (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why π Appears in Circles</h4>
+                            <p>π (pi) is the ratio of a circle's circumference to its diameter. This ratio is ALWAYS the same, no matter how big or small the circle!</p>
+                            <div class="example">
+For any circle: circumference ÷ diameter ≈ 3.14159...
+
+If diameter = 1, circumference = π
+If diameter = 2, circumference = 2π
+If diameter = d, circumference = πd
+
+Since radius = diameter/2, we can write:
+circumference = 2πr
+                            </div>
+                            <p>You can measure this yourself with string and circular objects!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Pythagorean Theorem</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            The famous a² + b² = c² formula for right triangles, where c is the hypotenuse.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+pythagorean+theorem" target="_blank" class="video-link">Pythagorean Theorem (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=AA6RfgP-AHU" target="_blank" class="video-link">Intro to Pythagorean Theorem (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Visual Proof of Pythagorean Theorem</h4>
+                            <p>One of the most beautiful proofs in mathematics uses area:</p>
+                            <div class="example">
+Draw a square with side length (a + b)
+Inside, arrange 4 identical right triangles
+The remaining space in the middle is a square with side c
+
+Big square area: (a + b)² = a² + 2ab + b²
+4 triangles area: 4 × (1/2)ab = 2ab
+Middle square area: c²
+
+Therefore: a² + 2ab + b² = 2ab + c²
+Simplify: a² + b² = c²
+                            </div>
+                            <p>This proof is over 2000 years old and there are over 300 different proofs of this theorem!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Pythagorean Triples</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            Common integer sets that satisfy a² + b² = c²: (3,4,5), (5,12,13), (8,15,17), (7,24,25).
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=0LE7sBgfkKw" target="_blank" class="video-link">Pythagorean Triples Explained</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Generating Pythagorean Triples</h4>
+                            <p>You can create infinite Pythagorean triples using this formula (for any integers m > n > 0):</p>
+                            <div class="example">
+a = m² - n²
+b = 2mn
+c = m² + n²
+
+Example: m = 2, n = 1
+a = 2² - 1² = 3
+b = 2(2)(1) = 4
+c = 2² + 1² = 5
+Triple: (3, 4, 5) ✓
+
+Also, any multiple works too!
+(3,4,5) → (6,8,10), (9,12,15), etc.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Special Right Triangles</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            The two "shortcut" triangles: 45-45-90 (sides: x, x, x√2) and 30-60-90 (sides: x, x√3, 2x).
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+30+60+90+triangles" target="_blank" class="video-link">30-60-90 Triangles (Khan)</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+45+45+90+triangles" target="_blank" class="video-link">45-45-90 Triangles (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=KE7B8cOYXXs" target="_blank" class="video-link">Special Right Triangles (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why 45-45-90 Has These Ratios</h4>
+                            <p>A 45-45-90 triangle is half of a square cut diagonally:</p>
+                            <div class="example">
+Start with a square with side length 1
+Cut it diagonally → two 45-45-90 triangles
+Two legs = 1 (sides of the square)
+Hypotenuse = diagonal of square
+
+Using Pythagorean Theorem:
+1² + 1² = c²
+2 = c²
+c = √2
+
+Ratio: 1 : 1 : √2
+Or generally: x : x : x√2
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Coordinate Geometry</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            Using the (x,y) coordinate plane to find slope, distance, and midpoint of lines and points.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+slope+of+a+line" target="_blank" class="video-link">Slope of a Line (Khan)</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+distance+formula" target="_blank" class="video-link">Distance Formula (Khan)</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+midpoint+formula" target="_blank" class="video-link">Midpoint Formula (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Distance Formula from Pythagorean Theorem</h4>
+                            <p>The distance formula is just the Pythagorean Theorem in disguise!</p>
+                            <div class="example">
+Two points: A(x₁, y₁) and B(x₂, y₂)
+
+Horizontal distance: |x₂ - x₁|
+Vertical distance: |y₂ - y₁|
+
+These form a right triangle!
+Hypotenuse = distance from A to B
+
+By Pythagorean Theorem:
+d² = (x₂ - x₁)² + (y₂ - y₁)²
+d = √[(x₂ - x₁)² + (y₂ - y₁)²]
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">3D Geometry (Volume & Surface Area)</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            Finding volume (space inside) and surface area (area of all faces) for 3D shapes: cubes, prisms, cylinders, spheres, pyramids, cones.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+volume+of+cylinders" target="_blank" class="video-link">Volume of Cylinders (Khan)</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+surface+area" target="_blank" class="video-link">Surface Area (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=OYhFYbWJG8E" target="_blank" class="video-link">Volume of 3D Shapes (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why Volume of Cylinder = πr²h</h4>
+                            <p>Think of a cylinder as a stack of circles:</p>
+                            <div class="example">
+Each circle has area = πr²
+Stack them to height h
+Volume = (area of base) × height
+Volume = πr² × h = πr²h
+
+Think of it like stacking coins:
+- Each coin has certain area
+- Stack them up
+- Total "volume" = coin area × stack height
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Category 4: Counting & Probability -->
+            <div class="category" data-category="counting">
+                <div class="category-header">
+                    <h2>4. Counting & Probability</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">Basic Probability</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            The chance of an event happening = (favorable outcomes) ÷ (total possible outcomes).
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+probability+basics" target="_blank" class="video-link">Probability Basics (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=uzkc-qNVoOk" target="_blank" class="video-link">Introduction to Probability (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Understanding Probability</h4>
+                            <p>Probability is always between 0 and 1 (or 0% and 100%):</p>
+                            <div class="example">
+Rolling a standard die:
+- Probability of rolling a 3: 1/6 (one favorable outcome out of 6)
+- Probability of rolling even: 3/6 = 1/2 (three favorable: 2,4,6)
+- Probability of rolling less than 7: 6/6 = 1 (certain)
+- Probability of rolling 7: 0/6 = 0 (impossible)
+
+Key: P(event) = (ways it can happen) / (total ways)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="beginner">
+                        <div class="topic-header">
+                            <span class="topic-title">The Counting Principle</span>
+                            <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                        </div>
+                        <div class="topic-description">
+                            If there are m ways to do one thing and n ways to do another, there are m × n ways to do both.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+counting+principle" target="_blank" class="video-link">Counting Principle (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=6AAz1c_rdf8" target="_blank" class="video-link">Fundamental Counting Principle (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why We Multiply</h4>
+                            <p>The counting principle comes from organizing possibilities:</p>
+                            <div class="example">
+Ice cream shop: 3 flavors, 2 toppings
+How many combinations?
+
+For EACH flavor, there are 2 topping choices:
+- Vanilla + sprinkles, Vanilla + fudge
+- Chocolate + sprinkles, Chocolate + fudge  
+- Strawberry + sprinkles, Strawberry + fudge
+
+Total: 3 × 2 = 6 combinations
+
+This extends: 3 shirts × 4 pants × 2 shoes = 24 outfits
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Permutations vs Combinations</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            Permutations: Order matters (like race winners). Combinations: Order doesn't matter (like choosing team members).
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=XJnIdRXUi7A" target="_blank" class="video-link">Permutations & Combinations Tutorial</a>
+                            <a href="https://www.youtube.com/results?search_query=khan+academy+introduction+to+combinations" target="_blank" class="video-link">Intro to Combinations (Khan)</a>
+                            <a href="https://www.youtube.com/watch?v=iKy-d5_erhI" target="_blank" class="video-link">Permutations (Khan)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 The Key Difference</h4>
+                            <p>Understanding when order matters is crucial:</p>
+                            <div class="example">
+Choosing 2 people from {A, B, C}:
+
+PERMUTATIONS (order matters - like 1st & 2nd place):
+AB, BA, AC, CA, BC, CB = 6 ways
+Formula: P(3,2) = 3!/(3-2)! = 6
+
+COMBINATIONS (order doesn't matter - like a team):
+{A,B}, {A,C}, {B,C} = 3 ways
+Formula: C(3,2) = 3!/(2!×1!) = 3
+
+Relationship: C(n,r) = P(n,r) / r!
+(Divide permutations by r! because r! arrangements are identical)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Factorials</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            n! = n × (n-1) × (n-2) × ... × 2 × 1. Used extensively in counting problems. Note: 0! = 1.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=9g4RsiFuLxo" target="_blank" class="video-link">Factorials Explained</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why Factorials Count Arrangements</h4>
+                            <p>Factorials count the number of ways to arrange n distinct objects:</p>
+                            <div class="example">
+Arrange 3 books {A, B, C}:
+
+Position 1: 3 choices
+Position 2: 2 choices (one book used)
+Position 3: 1 choice (two books used)
+
+Total: 3 × 2 × 1 = 3! = 6 arrangements
+(ABC, ACB, BAC, BCA, CAB, CBA)
+
+For n objects: n! arrangements
+                            </div>
+                            <p><strong>Why 0! = 1?</strong> There's exactly one way to arrange zero objects: do nothing!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="advanced">
+                        <div class="topic-header">
+                            <span class="topic-title">Casework (Counting Strategy)</span>
+                            <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                        </div>
+                        <div class="topic-description">
+                            Breaking complex counting problems into smaller, non-overlapping cases that can be counted separately and added together.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=HRjn9BcWHbA" target="_blank" class="video-link">Casework Counting (AoPS)</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 The Casework Method</h4>
+                            <p>When direct counting is hard, break into cases:</p>
+                            <div class="example">
+How many 2-digit numbers have at least one 5?
+
+CASE 1: 5 in tens place
+50, 51, 52, ..., 59 = 10 numbers
+
+CASE 2: 5 in ones place (but not tens)
+15, 25, 35, 45, 65, 75, 85, 95 = 8 numbers
+(Note: Skip 55, already counted in Case 1)
+
+Total: 10 + 8 = 18 numbers with at least one 5
+                            </div>
+                            <p>Make sure your cases don't overlap and cover everything!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="advanced">
+                        <div class="topic-header">
+                            <span class="topic-title">Complementary Counting</span>
+                            <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                        </div>
+                        <div class="topic-description">
+                            Count what you DON'T want and subtract from the total. Very useful for "at least" problems.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=oFyDxWX2nqY" target="_blank" class="video-link">Complementary Counting</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 When to Use Complements</h4>
+                            <p>Some problems are easier to count what DOESN'T happen:</p>
+                            <div class="example">
+Rolling two dice, probability of getting at least one 6?
+
+HARD WAY: Count all ways to get at least one 6
+- First die is 6: (6,1), (6,2), ..., (6,6) = 6 ways
+- Second die is 6: (1,6), (2,6), ..., (5,6) = 5 ways
+- Careful not to double-count (6,6)!
+
+EASY WAY: Use complement
+- Total outcomes: 6 × 6 = 36
+- No 6's: 5 × 5 = 25
+- At least one 6: 36 - 25 = 11
+
+Probability: 11/36
+                            </div>
+                            <p>Look for "at least," "at most," or "not all" as clues to use complements!</p>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="advanced">
+                        <div class="topic-header">
+                            <span class="topic-title">Stars and Bars</span>
+                            <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                        </div>
+                        <div class="topic-description">
+                            A method to count the number of ways to distribute identical objects into distinct groups.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://mikesmathpage.wordpress.com/2017/09/15/an-introductory-stars-and-bars-problem/" target="_blank" class="video-link">Stars and Bars Introduction</a>
+                            <a href="https://www.youtube.com/watch?v=UTCScjoPymA" target="_blank" class="video-link">Stars and Bars Explained</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 The Stars and Bars Technique</h4>
+                            <p>Distribute n identical items into k distinct groups:</p>
+                            <div class="example">
+Put 5 identical cookies into 3 distinct jars:
+
+Represent cookies as stars: ★ ★ ★ ★ ★
+Use 2 bars to create 3 groups: | |
+
+One arrangement: ★ ★ | ★ | ★ ★
+This means: 2 cookies in jar 1, 1 in jar 2, 2 in jar 3
+
+Total positions: 7 (5 stars + 2 bars)
+Choose positions for 2 bars: C(7,2) = 21 ways
+
+Formula: C(n + k - 1, k - 1)
+Here: C(5 + 3 - 1, 3 - 1) = C(7, 2) = 21
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="advanced">
+                        <div class="topic-header">
+                            <span class="topic-title">Pascal's Triangle</span>
+                            <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                        </div>
+                        <div class="topic-description">
+                            A triangular array of binomial coefficients. Each number is the sum of the two above it. Used for combinations and probability.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=0iMtlus-afo" target="_blank" class="video-link">Pascal's Triangle</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Pascal's Triangle Properties</h4>
+                            <p>This magical triangle appears everywhere in mathematics:</p>
+                            <div class="example">
+        1
+       1 1
+      1 2 1
+     1 3 3 1
+    1 4 6 4 1
+   1 5 10 10 5 1
+
+Row n gives coefficients for (a+b)ⁿ
+Row 2: 1 2 1 → (a+b)² = a² + 2ab + b²
+
+Each number = C(n,r) = combinations
+Row 4, position 2: C(4,2) = 6
+
+Each row sums to 2ⁿ:
+Row 3: 1+3+3+1 = 8 = 2³
+
+Building rule: Each number is sum of two above:
+10 = 4 + 6
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Category 5: Number Theory & Advanced Topics -->
+            <div class="category" data-category="number-theory">
+                <div class="category-header">
+                    <h2>5. Number Theory & Advanced Topics</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Number Bases (Binary, Octal, Hexadecimal)</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            Understanding numbers in different bases. Base 10 uses digits 0-9, base 2 (binary) uses 0-1, base 16 (hex) uses 0-9 and A-F.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=FFDMzbrEXaE" target="_blank" class="video-link">Number Bases Explained</a>
+                            <a href="https://www.youtube.com/watch?v=LpuPe81bc2w" target="_blank" class="video-link">Binary Numbers</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 How Different Bases Work</h4>
+                            <p>In base 10, each position represents a power of 10. Other bases work the same way!</p>
+                            <div class="example">
+Base 10 (decimal): 345
+= 3×10² + 4×10¹ + 5×10⁰
+= 300 + 40 + 5
+
+Base 2 (binary): 101
+= 1×2² + 0×2¹ + 1×2⁰
+= 4 + 0 + 1 = 5₁₀
+
+Base 16 (hex): 2F
+= 2×16¹ + F×16⁰
+= 2×16 + 15×1 = 47₁₀
+(Remember: F = 15 in hex)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Counting Factors of a Number</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            Using prime factorization to quickly count how many factors a number has.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=e_PNgFWN-gs" target="_blank" class="video-link">Counting Factors</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 The Factor Formula</h4>
+                            <p>If n = p₁^a × p₂^b × p₃^c (prime factorization), then number of factors = (a+1)(b+1)(c+1)</p>
+                            <div class="example">
+Find number of factors of 72:
+
+72 = 8 × 9 = 2³ × 3²
+
+Number of factors = (3+1)(2+1) = 4 × 3 = 12
+
+Why? Each factor uses:
+- 0, 1, 2, or 3 twos (4 choices)
+- 0, 1, or 2 threes (3 choices)
+Total combinations: 4 × 3 = 12
+
+List them: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72 ✓
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Sum of Factors</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            Finding the sum of all factors using prime factorization without listing them all.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=aYBjrDALzPM" target="_blank" class="video-link">Sum of Divisors</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Sum of Factors Formula</h4>
+                            <p>If n = p^a, sum of factors = (p^(a+1) - 1)/(p - 1)</p>
+                            <div class="example">
+Find sum of factors of 12 = 2² × 3¹:
+
+For 2²: (2³ - 1)/(2 - 1) = 7/1 = 7
+For 3¹: (3² - 1)/(3 - 1) = 8/2 = 4
+
+Total sum: 7 × 4 = 28
+
+Check: Factors of 12 are {1,2,3,4,6,12}
+Sum: 1+2+3+4+6+12 = 28 ✓
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="advanced">
+                        <div class="topic-header">
+                            <span class="topic-title">Squaring Numbers Ending in 5</span>
+                            <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                        </div>
+                        <div class="topic-description">
+                            Quick mental math trick: (n5)² = n(n+1) followed by 25. For example, 35² = 3×4 followed by 25 = 1225.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=jPH89Q1K1hA" target="_blank" class="video-link">Square Numbers Ending in 5</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Why This Trick Works</h4>
+                            <p>Let's prove why squaring a number ending in 5 follows this pattern:</p>
+                            <div class="example">
+Let the number be (10n + 5)
+Square it: (10n + 5)²
+= (10n)² + 2(10n)(5) + 5²
+= 100n² + 100n + 25
+= 100n(n + 1) + 25
+= n(n + 1) [followed by] 25
+
+Example: 65² = 6×7 [then] 25 = 4225
+
+Try it: 85² = 8×9 [then] 25 = 7225
+Check: 85 × 85 = 7225 ✓
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="advanced">
+                        <div class="topic-header">
+                            <span class="topic-title">Units Digit Patterns</span>
+                            <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                        </div>
+                        <div class="topic-description">
+                            Finding patterns in the units digit of powers. For example, powers of 7 cycle through 7,9,3,1 in the units place.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=GORYs3Egk5w" target="_blank" class="video-link">Units Digit Patterns</a>
+                        </div>
+                        <div class="proof-section">
+                            <h4>💡 Cyclical Patterns in Units Digits</h4>
+                            <p>Every base has a repeating cycle for units digits:</p>
+                            <div class="example">
+Powers of 7:
+7¹ = 7 (units digit: 7)
+7² = 49 (units digit: 9)
+7³ = 343 (units digit: 3)
+7⁴ = 2401 (units digit: 1)
+7⁵ = 16807 (units digit: 7) ← cycle repeats!
+
+Pattern: 7, 9, 3, 1, 7, 9, 3, 1, ...
+Cycle length: 4
+
+To find 7²³:
+23 ÷ 4 = 5 remainder 3
+Same as 7³ → units digit is 3
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Geometric Mean</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            If a/x = x/b, then x = √(ab). The geometric mean is the square root of the product of two numbers.
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=8bqC832O-RQ" target="_blank" class="video-link">Geometric Mean Explained</a>
+                        </div>
+                    </div>
+
+                    <div class="topic" data-difficulty="intermediate">
+                        <div class="topic-header">
+                            <span class="topic-title">Sum and Difference of Cubes</span>
+                            <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                        </div>
+                        <div class="topic-description">
+                            Factoring patterns: a³ + b³ = (a + b)(a² - ab + b²) and a³ - b³ = (a - b)(a² + ab + b²).
+                        </div>
+                        <div class="video-links">
+                            <a href="https://www.youtube.com/watch?v=jjBGFuv4W34" target="_blank" class="video-link">Sum and Difference of Cubes</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Math Club Resources | Prepared for MATHCOUNTS Competition</p>
+            <p>All video content courtesy of Khan Academy, Art of Problem Solving, and other educational creators</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle category sections
+        document.querySelectorAll('.category-header').forEach(header => {
+            header.addEventListener('click', function() {
+                this.parentElement.classList.toggle('collapsed');
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const topics = document.querySelectorAll('.topic');
+            
+            topics.forEach(topic => {
+                const title = topic.querySelector('.topic-title').textContent.toLowerCase();
+                const description = topic.querySelector('.topic-description').textContent.toLowerCase();
+                const proofSection = topic.querySelector('.proof-section');
+                const proofText = proofSection ? proofSection.textContent.toLowerCase() : '';
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || proofText.includes(searchTerm)) {
+                    topic.classList.remove('hidden');
+                } else {
+                    topic.classList.add('hidden');
+                }
+            });
+
+            // Hide empty categories
+            document.querySelectorAll('.category').forEach(category => {
+                const visibleTopics = category.querySelectorAll('.topic:not(.hidden)');
+                if (visibleTopics.length === 0) {
+                    category.classList.add('hidden');
+                } else {
+                    category.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Filter by difficulty
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+                const topics = document.querySelectorAll('.topic');
+
+                topics.forEach(topic => {
+                    if (filter === 'all' || topic.dataset.difficulty === filter) {
+                        topic.classList.remove('hidden');
+                    } else {
+                        topic.classList.add('hidden');
+                    }
+                });
+
+                // Hide empty categories
+                document.querySelectorAll('.category').forEach(category => {
+                    const visibleTopics = category.querySelectorAll('.topic:not(.hidden)');
+                    if (visibleTopics.length === 0) {
+                        category.classList.add('hidden');
+                    } else {
+                        category.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
