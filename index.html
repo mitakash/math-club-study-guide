@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATHCOUNTS Video Study Guide - Comprehensive Reference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .intro {
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .intro h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .intro ul {
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+        
+        .intro li {
+            margin: 8px 0;
+        }
+        
+        nav {
+            background: #2c3e50;
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .category {
+            margin-bottom: 50px;
+        }
+        
+        .category h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .topic {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s;
+        }
+        
+        .topic:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+        
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .topic h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-right: 15px;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .beginner {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .intermediate {
+            background: #FF9800;
+            color: white;
+        }
+        
+        .advanced {
+            background: #F44336;
+            color: white;
+        }
+        
+        .topic-description {
+            color: #555;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        
+        .video-links {
+            margin-top: 10px;
+        }
+        
+        .video-links a {
+            display: inline-block;
+            margin: 5px 10px 5px 0;
+            padding: 8px 15px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        
+        .video-links a:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content, header, .intro, nav {
+                padding: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 MATHCOUNTS Video Study Guide</h1>
+            <p>Comprehensive YouTube Video Resources for Math Competition Success</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">For Students Ages 11-12 | All Difficulty Levels</p>
+        </header>
+        
+        <div class="intro">
+            <h2>📚 About This Guide</h2>
+            <p>This comprehensive video study guide covers all essential topics from MATHCOUNTS competition materials. Each topic includes:</p>
+            <ul>
+                <li><strong>Difficulty Level:</strong> Beginner, Intermediate, or Advanced</li>
+                <li><strong>Clear Description:</strong> What you'll learn</li>
+                <li><strong>Video Links:</strong> Curated from Khan Academy and popular educational channels</li>
+                <li><strong>Age-Appropriate:</strong> All content suitable for 11-12 year olds</li>
+            </ul>
+        </div>
+        
+        <nav>
+            <h3>📑 Quick Navigation</h3>
+            <ul>
+                <li><a href="#arithmetic">Arithmetic</a></li>
+                <li><a href="#algebra">Algebra</a></li>
+                <li><a href="#geometry">Geometry</a></li>
+                <li><a href="#number-theory">Number Theory & Counting</a></li>
+                <li><a href="#data">Data Analysis & Probability</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <!-- ARITHMETIC SECTION -->
+            <div id="arithmetic" class="category">
+                <h2>🔢 Arithmetic</h2>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Arithmetic Operations with Rational Numbers</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                    </div>
+                    <p class="topic-description">Learn the fundamental operations (addition, subtraction, multiplication, division) with integers, fractions, and decimals.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-arithmetic-operations" target="_blank">📹 Arithmetic Operations (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Addition & Subtraction</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                    </div>
+                    <p class="topic-description">Master basic addition and subtraction with whole numbers, fractions, and decimals.</p>
+                    <div class="video-links">
+                        <a href="https://www.youtube.com/watch?v=AuX7nPBqDts" target="_blank">📹 Basic Addition (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Multiplication & Division</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                    </div>
+                    <p class="topic-description">Problem-solving with multiplication and division, including multi-digit operations.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/kmap/operations-and-algebraic-thinking-e/problem-solving-with-arithmetic" target="_blank">📹 Problem Solving with Arithmetic (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Fractions</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                    </div>
+                    <p class="topic-description">Understanding fractions, equivalent fractions, adding, subtracting, multiplying, and dividing fractions.</p>
+                    <div class="video-links">
+                        <a href="https://www.youtube.com/watch?v=Yw8azUV_vW8" target="_blank">📹 Fractions for Kids (Smile and Learn)</a>
+                        <a href="https://www.khanacademy.org/math/arithmetic-home/arith-review-fractions" target="_blank">📹 Fractions (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Decimals</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                    </div>
+                    <p class="topic-description">Introduction to decimals, place value, and operations with decimal numbers.</p>
+                    <div class="video-links">
+                        <a href="https://www.youtube.com/watch?v=BItpeFXC4vA" target="_blank">📹 Intro to Decimals (Khan Academy)</a>
+                        <a href="https://www.khanacademy.org/math/arithmetic/arith-decimals" target="_blank">📹 Decimals and Place Value (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Percentages</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Converting between fractions, decimals, and percentages. Solving percentage problems.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/pre-algebra/xb4832e56:percentages" target="_blank">📹 Percentages (Khan Academy)</a>
+                        <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/x0267d782:cc-6th-rates-and-percentages/cc-6th-percent-problems/v/finding-percentages-example" target="_blank">📹 Finding Percentages (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Order of Operations (PEMDAS)</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Learn the correct order for evaluating mathematical expressions using Parentheses, Exponents, Multiplication/Division, and Addition/Subtraction.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/x0267d782:cc-6th-exponents-and-order-of-operations/cc-6th-order-of-operations/v/order-operations-intro" target="_blank">📹 Order of Operations Introduction (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Exponents & Powers</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Understanding exponents, powers of numbers, and exponential notation.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/pre-algebra/xb4832e56:exponents-intro-and-order-of-operations" target="_blank">📹 Exponents Intro (Khan Academy)</a>
+                        <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/x0267d782:cc-6th-exponents-and-order-of-operations" target="_blank">📹 Exponent Properties (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Square Roots & Radicals</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Introduction to square roots, perfect squares, and radical expressions.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/arithmetic-home/arith-review-square-roots" target="_blank">📹 What is a Square Root (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Absolute Value</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Understanding absolute value as distance from zero on the number line.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-absolute-value/cc-7th-absolute-value-tut/v/absolute-value" target="_blank">📹 Absolute Value (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Distance = Rate × Time</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Solving problems involving distance, rate (speed), and time relationships.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:linear-equations-functions/x2f8bb11595b61c86:rate-of-change-and-slope/v/distance-rate-time-example" target="_blank">📹 Distance Rate Time Problems (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Divisibility Rules</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Quick methods to determine if a number is divisible by 2, 3, 4, 5, 6, 8, 9, or 10 without doing division.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/pre-algebra/pre-algebra-factors-multiples/pre-algebra-divisibility-tests/v/divisibility-tests-for-2-3-4-5-6-9-10" target="_blank">📹 Divisibility Rules (Khan Academy)</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ALGEBRA SECTION -->
+            <div id="algebra" class="category">
+                <h2>📐 Algebra</h2>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Linear Equations & Functions</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Solving linear equations, understanding slope and y-intercept, graphing lines.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra/linear-equations/eqs-with-graphs/v/slope-of-a-line" target="_blank">📹 Slope of a Line (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Equation of a Line</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Slope-intercept form (y = mx + b), point-slope form, and standard form (Ax + By = C).</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:forms-of-linear-equations/x2f8bb11595b61c86:slope-intercept-form/v/slope-intercept-form" target="_blank">📹 Slope-Intercept Form (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Systems of Equations</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Solving two equations with two unknowns using substitution, elimination, or graphing.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra/x2f8bb1159b61c86:systems-of-equations" target="_blank">📹 Systems of Equations (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Inequalities</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Solving and graphing inequalities with one or two variables.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/cc-sixth-grade-math/x0267d782:cc-6th-inequalities-equalities" target="_blank">📹 Inequalities (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Quadratic Formula</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Using the quadratic formula to solve equations of the form ax² + bx + c = 0.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra/quadratics/quadratic-formula-a1/v/quadratic-formula" target="_blank">📹 Quadratic Formula (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Factoring</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Factoring quadratic expressions and polynomials.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra-home/algebra-factoring" target="_blank">📹 Factoring Quadratics (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Difference of Squares</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Factoring expressions of the form a² - b² = (a + b)(a - b).</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratics-multiplying-factoring/x2f8bb11595b61c86:factor-difference-squares/v/factoring-difference-of-squares" target="_blank">📹 Difference of Squares (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Sum and Difference of Cubes</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Factoring a³ + b³ and a³ - b³ using special formulas.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra-home/alg-polynomials/alg-advanced-polynomial-factorization-methods/v/factoring-sum-of-cubes" target="_blank">📹 Sum of Cubes (Khan Academy)</a>
+                        <a href="https://www.khanacademy.org/math/algebra-home/alg-polynomials/alg-advanced-polynomial-factorization-methods/v/difference-of-cubes-factoring" target="_blank">📹 Difference of Cubes (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Functions & Graphs</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Understanding functions, domain and range, and graphing various functions.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra2/functions-and-graphs" target="_blank">📹 Intro to Functions (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Negative Exponents</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Understanding that x⁻ⁿ = 1/xⁿ and working with negative exponents.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/pre-algebra/xb4832e56:exponents-radicals/xb4832e56:negative-exponents/v/negative-exponents" target="_blank">📹 Negative Exponents (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Complex Numbers</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Introduction to imaginary numbers (i) and complex numbers (a + bi).</p>
+                    <div class="video-links">
+                        <a href="https://www.youtube.com/watch?v=Y9bMf9pYrIw" target="_blank">📹 Complex Numbers Overview (YouTube)</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GEOMETRY SECTION -->
+            <div id="geometry" class="category">
+                <h2>📏 Geometry</h2>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Perimeter & Area of Polygons</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                    </div>
+                    <p class="topic-description">Calculating perimeter and area for squares, rectangles, triangles, parallelograms, trapezoids, and other polygons.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/cc-third-grade-math/imp-area-of-polygons" target="_blank">📹 Area and Perimeter (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Pythagorean Theorem</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">a² + b² = c² for right triangles. Finding missing side lengths.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig/hs-geo-pythagorean-theorem/v/the-pythagorean-theorem" target="_blank">📹 The Pythagorean Theorem (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Pythagorean Triples</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Common sets of integers that satisfy the Pythagorean theorem: (3,4,5), (5,12,13), (8,15,17), etc.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig/hs-geo-pythagorean-theorem/v/pythagorean-theorem-and-triples" target="_blank">📹 Pythagorean Triples (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Special Right Triangles (30-60-90 and 45-45-90)</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Side ratios in special right triangles for quick calculations.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry-home/geo-triangle-types" target="_blank">📹 Triangle Types (Khan Academy)</a>
+                        <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig/hs-geo-special-right-triangles/v/30-60-90-triangle-side-ratios-proof" target="_blank">📹 30-60-90 Triangles (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Distance, Slope, and Midpoint Formulas</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Coordinate geometry: finding distance between points, slope of lines, and midpoints of line segments.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry/hs-geo-analytic-geometry/hs-geo-distance/v/distance-between-two-points" target="_blank">📹 Distance Formula (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Surface Area & Volume of 3D Shapes</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Calculating surface area and volume for cubes, rectangular prisms, cylinders, cones, spheres, and pyramids.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry/hs-geo-volume" target="_blank">📹 Volume and Surface Area (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Polygons & Interior/Exterior Angles</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Sum of interior angles formula: 180(n-2). Finding individual angle measures in regular polygons.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry/hs-geo-polygons" target="_blank">📹 Polygons and Angles (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Circle Geometry</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Circumference, area, arc length, and sector area. Understanding π and circle relationships.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry/hs-geo-circles" target="_blank">📹 Circles: Area & Circumference (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Transformations & Symmetry</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Translations, rotations, reflections, and dilations. Line and rotational symmetry.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry/hs-geo-transformations" target="_blank">📹 Transformations and Symmetry (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Similar Figures & Scale Factor</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Understanding similarity, proportions, and how perimeter, area, and volume scale.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry/hs-geo-similarity" target="_blank">📹 Scale Factor and Similar Figures (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Heron's Formula</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Finding the area of a triangle using only its three side lengths: Area = √[s(s-a)(s-b)(s-c)].</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry-home/geometry-volume-surface-area/heron-formula-tutorial/v/heron-s-formula" target="_blank">📹 Heron's Formula (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Geometric Mean</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Understanding geometric mean and its application in similar triangles and right triangles.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry-home/hs-geo-similarity/hs-geo-geometric-mean/v/geometric-mean-example" target="_blank">📹 Geometric Mean (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Diagonals of Polygons</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Finding the number of diagonals in a polygon: n(n-3)/2. Diagonal length formulas for squares and rectangles.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/geometry-home/hs-geo-polygons/hs-geo-polygon-diagonals/v/number-of-diagonals-in-a-polygon" target="_blank">📹 Polygon Diagonals (Khan Academy)</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NUMBER THEORY & COUNTING SECTION -->
+            <div id="number-theory" class="category">
+                <h2>🔢 Number Theory & Counting</h2>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Prime Numbers</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                    </div>
+                    <p class="topic-description">Understanding prime numbers (divisible only by 1 and themselves), identifying primes, and using prime factorization.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/cc-fourth-grade-math/imp-factors-multiples-and-patterns/imp-prime-and-composite-numbers/v/prime-numbers" target="_blank">📹 Prime Numbers (Khan Academy)</a>
+                        <a href="https://www.youtube.com/watch?v=5gBtzdM5M5k" target="_blank">📹 What are Prime Numbers (Math with Mr. J)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Prime Factorization</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Breaking down numbers into their prime factors using factor trees.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/arithmetic/arith-review-factors-multiples/arith-review-prime-factorization/v/prime-factorization-exercise" target="_blank">📹 Prime Factorization (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>GCF (Greatest Common Factor) and LCM (Least Common Multiple)</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Finding the largest number that divides two numbers and the smallest number divisible by both.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/arithmetic/arith-review-factors-multiples/arith-review-greatest-common-factor/v/greatest-common-factor-exercise" target="_blank">📹 Greatest Common Factor (Khan Academy)</a>
+                        <a href="https://www.khanacademy.org/math/pre-algebra/pre-algebra-factors-multiples/pre-algebra-least-common-multiple/v/least-common-multiple" target="_blank">📹 Least Common Multiple (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Factorials</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Understanding n! = n × (n-1) × (n-2) × ... × 2 × 1. Applications in counting problems.</p>
+                    <div class="video-links">
+                        <a href="https://www.youtube.com/watch?v=9g4RsiFuLxo" target="_blank">📹 Factorials Explained (YouTube)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Combinations & Permutations</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">nCr vs nPr - when order matters and when it doesn't. Using formulas to count arrangements and selections.</p>
+                    <div class="video-links">
+                        <a href="https://www.youtube.com/watch?v=9kA5b9hJpVY" target="_blank">📹 Combinatorics for Kids (YouTube)</a>
+                        <a href="https://www.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations" target="_blank">📹 Combinations & Permutations (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Counting Principle</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">If there are m ways to do one thing and n ways to do another, there are m × n ways to do both.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/pre-algebra/pre-algebra-counting/prob-addition/v/counting-principle" target="_blank">📹 Counting Principle (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Patterns & Sequences</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Identifying and extending patterns. Arithmetic and geometric sequences.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/pre-algebra/pre-algebra-patterns" target="_blank">📹 Patterns and Sequences (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Arithmetic Series & Sum Formulas</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Sum of first n integers: n(n+1)/2. Sum of first n odd numbers: n². Sum of arithmetic sequences.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:series/x9e81a4f98389efdf:arith-series/v/formula-for-arithmetic-series" target="_blank">📹 Arithmetic Series Formula (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Pascal's Triangle</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Understanding Pascal's Triangle for binomial expansion, combinations, and probability.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:series/x9e81a4f98389efdf:binomial/v/pascals-triangle-binomial-theorem" target="_blank">📹 Pascal's Triangle and Binomial Expansion (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Mental Math Tricks - Squaring Numbers Ending in 5</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Quick method: For n5², result is n(n+1)25. Example: 35² = 3×4 = 12, so 1225.</p>
+                    <div class="video-links">
+                        <a href="https://www.youtube.com/watch?v=lUqLqNWYByM" target="_blank">📹 Squaring Numbers Ending in 5 (YouTube)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Units Digit Patterns in Powers</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Finding the last digit of large powers by identifying repeating patterns in units digits.</p>
+                    <div class="video-links">
+                        <a href="https://www.youtube.com/watch?v=kswN3xH7W8Q" target="_blank">📹 Units Digit Patterns (YouTube)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Number Bases (Binary, Octal, Hexadecimal)</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Converting between base-10 and other bases. Understanding positional notation.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/decimal-to-binary" target="_blank">📹 Decimal to Binary (Khan Academy)</a>
+                        <a href="https://www.ducksters.com/kidsmath/binary_numbers_basics.php" target="_blank">📹 Binary Numbers for Kids (Ducksters)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Counting & Summing Factors</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                    </div>
+                    <p class="topic-description">Using prime factorization to determine how many factors a number has and finding their sum.</p>
+                    <div class="video-links">
+                        <a href="https://www.youtube.com/watch?v=QTLb3rBF6V0" target="_blank">📹 Counting Factors (YouTube)</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DATA ANALYSIS & PROBABILITY SECTION -->
+            <div id="data" class="category">
+                <h2>📊 Data Analysis & Probability</h2>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Mean, Median, Mode, and Range</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                    </div>
+                    <p class="topic-description">Measures of central tendency and spread. Calculating and interpreting these statistics.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/pre-algebra/pre-algebra-data-statistics" target="_blank">📹 Mean, Median, Mode, Range (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Probability Basics</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Understanding probability as a fraction, decimal, or percentage. Simple and compound probability.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/statistics-probability/probability-library" target="_blank">📹 Probability Basics (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Box-and-Whisker Plots</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Understanding quartiles, minimum, maximum, and how to read box plots.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/box-whisker-plots/v/reading-box-and-whisker-plots" target="_blank">📹 Box-and-Whisker Plots (Khan Academy)</a>
+                    </div>
+                </div>
+                
+                <div class="topic">
+                    <div class="topic-header">
+                        <h3>Frequency Distributions & Histograms</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                    </div>
+                    <p class="topic-description">Organizing data into frequency tables and representing it with histograms.</p>
+                    <div class="video-links">
+                        <a href="https://www.khanacademy.org/math/statistics-probability/displaying-describing-data" target="_blank">📹 Frequency Distributions (Khan Academy)</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <footer>
+            <p><strong>🎯 MATHCOUNTS Video Study Guide</strong></p>
+            <p>Compiled from official MATHCOUNTS competition materials and curated educational resources</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">All video links lead to free educational content from Khan Academy and other reputable sources</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">Last Updated: October 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
